@@ -13,6 +13,7 @@
 
     <!-- Styles for index page -->
     <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="../stylesheets/loginStyle.css">
   </head>
 
   <body>
@@ -20,15 +21,20 @@
       <h1>Book Trader</h1>
       <nav>
         <a href="/users/login">Login</a>
-        <a href="/users/signup">Signup</a>
       </nav>
     </header>
     <main>
-      <div>
-        <p>Add books to the library or borrow books from others</p>
-      </div>
+      <form id="signupForm">
+        <input type="text" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="city" placeholder="City">
+        <input type="text" id="state" placeholder="State">
+        <button type="button" onclick="userCreated()">Sign Up!</button>
+        <p id="invalidLogin">Invalid Login. Please try again or sign up.</p>
+      </form>
     </main>
     <footer>&copy; 2017 Matt Leonard</footer>
-    <script type="text/javascript" src="./javascripts/index.js"></script>
+    <script type="text/javascript" src="/javascripts/signup.js"></script>
   </body>
 </html>

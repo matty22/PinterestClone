@@ -13,22 +13,25 @@
 
     <!-- Styles for index page -->
     <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="../stylesheets/loginStyle.css">
   </head>
 
   <body>
     <header>
       <h1>Book Trader</h1>
       <nav>
-        <a href="/users/login">Login</a>
-        <a href="/users/signup">Signup</a>
+        <a href="/books">Library</a>
       </nav>
     </header>
     <main>
-      <div>
-        <p>Add books to the library or borrow books from others</p>
-      </div>
+      <form id="editForm">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="city" placeholder="City">
+        <input type="text" id="state" placeholder="State">
+        <button type="button" onclick="userEdited()">Submit Changes</button>
+      </form>
     </main>
     <footer>&copy; 2017 Matt Leonard</footer>
-    <script type="text/javascript" src="./javascripts/index.js"></script>
+    <script type="text/javascript" src="/javascripts/edit.js"></script>
   </body>
 </html>
