@@ -13,6 +13,7 @@
 
     <!-- Styles for index page -->
     <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="../stylesheets/addbook.css">
   </head>
 
   <body>
@@ -23,11 +24,14 @@
         <a href="/users/edit">Edit Profile</a>
       </nav>
     </header>
-    <main>
+    <aside>
       <input type="text" id="search" placeholder="Search for books">
-      <input type="button" onclick="bookSearch()">
+      <input type="button" onclick="bookSearch()" value="Search">
+    </aside>
+    <main id="resultsGrid">
+      
     </main>
     <footer>&copy; 2017 Matt Leonard</footer>
-    <script type="text/javascript" src="./javascripts/index.js"></script>
+    <script type="text/javascript" src="/javascripts/addbook.js"></script>
   </body>
 </html>
