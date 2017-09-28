@@ -13,41 +13,32 @@ bookRouter.get('/', function(req, res, next) {
   res.render('../public/books');
 });
 
+// Route for client JS to hit to retrieve data
+bookRouter.route('/data')
+          // Method to get all books
+          .get(function(req, res, next) {
+            Books.find({}, function(err, book) {
+              if (err) throw err;
+              res.json(book);
+            });
+});
+
 bookRouter.get('/add', function(req, res, next) {
   res.render('../public/addbook');
 });
 
-// bookRouter.route('/signup/data')
-//           .post(function(req, res, next) {
-//             Users.create({email: req.body.email, password: req.body.password, pollsVoted: req.body.pollsVoted}, function(err, user) {
-//               if (err) throw err;
-//               if (user) {
-//                 res.send({redirect: '/polls'});
-//               }
-//               else {
-//                 res.writeHead(401);
-//                 res.end("Bad Signup");
-//               }
-//             });
-//           });
-
-
-
-// bookRouter.route('/login/data')
-//           .post(function(req, res, next) {
-//             Users.find({'email': req.body.email})
-//                  .where('password').equals(req.body.password)
-//                  .exec(function(err, user) {
-//                    if (err) throw err;
-//                    if (user[0]) {
-//                      user.redirect = '/polls'
-//                      res.setHeader('Set-Cookie', ['type=login', 'language=javascript', 'path=/']);
-//                      res.send(user);
-//                    } else {
-//                      res.writeHead(401);
-//                      res.end('Bad Login');
-//                    }
-//                  })
-//           });
+bookRouter.route('/add/data')
+          .post(function(req, res, next) {
+            Books.create({name: req.body.name, owner: req.body.owner}, function(err, book) {
+              if (err) throw err;
+              if (book) {
+                res.send(book);
+              }
+              else {
+                res.writeHead(401);
+                res.end("Did not add");
+              }
+            });
+          });
 
 module.exports = bookRouter;

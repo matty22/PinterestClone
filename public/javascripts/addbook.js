@@ -23,6 +23,24 @@ function bookSearch() {
 }
 
 function addBookToLibrary() {
-  // Send name and currently logged in user to dB and create book record
-  console.log(gbookName);
+  let user = JSON.parse(sessionStorage.getItem('user'));
+
+  let book = {};
+  book.name = gbookName;  
+  book.owner = user[0].email;
+
+  let json = JSON.stringify(book);
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://localhost:3000/books/add/data', true);
+  xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+  xhr.onload = function() {
+      if (xhr.status === 200) {
+        console.log(xhr.responseText);
+        window.location = '/books';
+      }
+      else {
+          console.error("you suck: addBookToLibrary() function");
+      }
+  }
+  xhr.send(json);
 }

@@ -16,7 +16,7 @@ function login() {
       if (xhr.status === 200) {
         document.cookie = 'name=validLogin; path=/;'
         // Only necessary if I'm going to try to prevent double votes
-        // sessionStorage.setItem('user', xhr.responseText)
+        sessionStorage.setItem('user', xhr.responseText)
         window.location = '/books';
       }
       else {
