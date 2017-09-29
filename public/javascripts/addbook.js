@@ -1,5 +1,5 @@
 
-let gbookName;
+let gbook;
 
 function bookSearch() {
   let bookName = document.getElementById('search').value;
@@ -10,7 +10,8 @@ function bookSearch() {
       if (xhr.status === 200) {
         let dataObject = JSON.parse(xhr.responseText)
         let book = dataObject.items[0];
-        gbookName = book.volumeInfo.title;
+        console.log(book);
+        gbook = book.volumeInfo;
         var card = document.createElement("div");
         card.innerHTML = "<img src='" + book.volumeInfo.imageLinks.thumbnail +"'><input type='button' value='Add Book' onclick='addBookToLibrary()'>";
         document.getElementById("resultsGrid").appendChild(card);
@@ -26,7 +27,8 @@ function addBookToLibrary() {
   let user = JSON.parse(sessionStorage.getItem('user'));
 
   let book = {};
-  book.name = gbookName;  
+  book.name = gbook.title;
+  book.image_url = gbook.imageLinks.thumbnail;  
   book.owner = user[0].email;
 
   let json = JSON.stringify(book);

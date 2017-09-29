@@ -29,7 +29,7 @@ bookRouter.get('/add', function(req, res, next) {
 
 bookRouter.route('/add/data')
           .post(function(req, res, next) {
-            Books.create({name: req.body.name, owner: req.body.owner}, function(err, book) {
+            Books.create({name: req.body.name, image_url: req.body.image_url, owner: req.body.owner}, function(err, book) {
               if (err) throw err;
               if (book) {
                 res.send(book);

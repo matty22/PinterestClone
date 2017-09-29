@@ -6,7 +6,12 @@ var Schema = mongoose.Schema;
 var bookSchema = new Schema({
   name: {
     type: String,
-    unique: true
+    unique: true,
+    required: true
+  },
+  image_url: {
+    type: String,
+    required: true
   },
   owner: {
     type: String
