@@ -1,16 +1,18 @@
 
 // LOTS TO DO HERE
 
-// Function that creates new User object and sends it to Mongo
+// Function that edits a user profile
 function userEdited() {
-  // Will have to grab the user email address out of localstorage
 
+  let user = JSON.parse(sessionStorage.getItem('user'));
   let userObj = {};
 
-  // userObj.email = localStorage.getItem('email');
+  userObj.email = user[0].email;
   userObj.name = document.getElementById('name').value;
   userObj.city = document.getElementById('city').value;
   userObj.state = document.getElementById('state').value;
+
+  console.log(userObj);
 
   if (userObj.email) {
     // Setup data object to send to Express route
