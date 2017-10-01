@@ -54,4 +54,10 @@ userRouter.get('/edit', function(req, res, next) {
   res.render('../public/edit');
 });
 
+// Route for user changing their profile info
+userRouter.route('/edit/data')
+          .put(function(req, res, next) {
+            console.log(req.body);
+          })
+
 module.exports = userRouter;

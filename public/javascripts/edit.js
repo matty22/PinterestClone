@@ -7,12 +7,10 @@ function userEdited() {
   let user = JSON.parse(sessionStorage.getItem('user'));
   let userObj = {};
 
-  userObj.email = user[0].email;
+  userObj.id = user[0]._id;
   userObj.name = document.getElementById('name').value;
   userObj.city = document.getElementById('city').value;
   userObj.state = document.getElementById('state').value;
-
-  console.log(userObj);
 
   if (userObj.email) {
     // Setup data object to send to Express route
