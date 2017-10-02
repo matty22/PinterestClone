@@ -12,7 +12,7 @@ function userEdited() {
   userObj.city = document.getElementById('city').value;
   userObj.state = document.getElementById('state').value;
 
-  if (userObj.email) {
+  if (userObj.id) {
     // Setup data object to send to Express route
     var json = JSON.stringify(userObj);
     var xhr = new XMLHttpRequest();
@@ -20,10 +20,8 @@ function userEdited() {
     xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
     xhr.onload = function() {
         if (xhr.status === 200) {
-          // document.cookie = 'name=validLogin; path=/;'
-          // let redirectURL = JSON.parse(xhr.responseText);
-          // window.location = redirectURL.redirect;
-          window.location = '/books'
+          console.log(xhr.responseText);
+          // window.location = '/books'
         }
         else {
             console.error("you suck: signup.js page");

@@ -57,7 +57,10 @@ userRouter.get('/edit', function(req, res, next) {
 // Route for user changing their profile info
 userRouter.route('/edit/data')
           .put(function(req, res, next) {
-            console.log(req.body);
+            Users.findByIdAndUpdate(req.body.id, { name: req.body.name, city: req.body.city, state: req.body.state }, {new: true}, function(err, update) {
+              if (err) throw err;
+              res.send(update);
+            })
           })
 
 module.exports = userRouter;
