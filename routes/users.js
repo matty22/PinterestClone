@@ -18,7 +18,7 @@ userRouter.route('/signup/data')
             Users.create({email: req.body.email, password: req.body.password, name: req.body.name, city: req.body.city, state: req.body.state, requests: req.body.requests}, function(err, user) {
               if (err) throw err;
               if (user) {
-                res.send({redirect: '/books'});
+                res.send(user);
               }
               else {
                 res.writeHead(401);
@@ -60,7 +60,17 @@ userRouter.route('/edit/data')
             Users.findByIdAndUpdate(req.body.id, { name: req.body.name, city: req.body.city, state: req.body.state }, {new: true}, function(err, update) {
               if (err) throw err;
               res.send(update);
-            })
-          })
+            });
+          });
+
+// Update user profile when they have a pending book request
+userRouter.route('/request/data')
+          .put(function(req, res, next) {
+            console.log(req);
+            Users.findByIdAndUpdate(req.body.owner, {requests: req.body}, {new: true}, function(err, user) {
+              if (err) throw err;
+              res.send(user);
+            });
+          });
 
 module.exports = userRouter;

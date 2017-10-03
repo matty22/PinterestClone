@@ -2,6 +2,19 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+// Define requests sub-schema
+var requestSchema = new Schema({
+  name: {
+    type: String
+  },
+  image_url: {
+    type: String
+  },
+  owner: {
+    type: String,
+  }
+});
+
 // Define user schema
 var userSchema = new Schema({
   email: {
@@ -22,8 +35,9 @@ var userSchema = new Schema({
   state: {
     type: String
   },
-  requests: [{type: String}]
+  requests: [requestSchema]
 });
+
 
 // Create User model using user schema
 var Users = mongoose.model('User', userSchema);

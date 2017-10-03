@@ -14,8 +14,6 @@ function login() {
   xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
   xhr.onload = function() {
       if (xhr.status === 200) {
-        document.cookie = 'name=validLogin; path=/;'
-        // Only necessary if I'm going to try to prevent double votes
         sessionStorage.setItem('user', xhr.responseText)
         window.location = '/books';
       }

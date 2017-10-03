@@ -32,8 +32,23 @@ function requestBook(event) {
   xhr.open('GET', 'http://localhost:3000/books/data/request', true);
   xhr.onload = function() {
       if (xhr.status === 200) {
+        
         // Then, find that book's owner and stick the returned book object in their requests array
-        let book = JSON.parse(xhr.responseText);
+        let response = JSON.parse(xhr.responseText)[0];
+        let bookJson = JSON.stringify(response);
+
+
+        let bookXhr = new XMLHttpRequest();
+        bookXhr.open('PUT', 'http://localhost:3000/users/request/data', true);
+        bookXhr.onload = function() {
+            if (bookXhr.status === 200) {
+             console.log("This is the updated user: " + bookXhr.responseText);
+            }
+            else {
+                alert("You done goofed");
+            }
+        }
+        bookXhr.send(bookJson);
       }
       else {
           alert("You done goofed");

@@ -8,7 +8,7 @@ function bookSearch() {
   xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
   xhr.onload = function() {
       if (xhr.status === 200) {
-        let dataObject = JSON.parse(xhr.responseText)
+        let dataObject = JSON.parse(xhr.responseText);
         let book = dataObject.items[0];
         gbook = book.volumeInfo;
         var card = document.createElement("div");
@@ -28,7 +28,7 @@ function addBookToLibrary() {
   let book = {};
   book.name = gbook.title;
   book.image_url = gbook.imageLinks.thumbnail;  
-  book.owner = user[0]._id;
+  book.owner = user._id;
 
   let json = JSON.stringify(book);
   let xhr = new XMLHttpRequest();
