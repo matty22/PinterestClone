@@ -10,7 +10,6 @@ function bookSearch() {
       if (xhr.status === 200) {
         let dataObject = JSON.parse(xhr.responseText)
         let book = dataObject.items[0];
-        console.log(book);
         gbook = book.volumeInfo;
         var card = document.createElement("div");
         card.innerHTML = "<img src='" + book.volumeInfo.imageLinks.thumbnail +"'><input type='button' value='Add Book' onclick='addBookToLibrary()'>";
@@ -29,7 +28,7 @@ function addBookToLibrary() {
   let book = {};
   book.name = gbook.title;
   book.image_url = gbook.imageLinks.thumbnail;  
-  book.owner = user[0].email;
+  book.owner = user[0]._id;
 
   let json = JSON.stringify(book);
   let xhr = new XMLHttpRequest();
@@ -37,7 +36,6 @@ function addBookToLibrary() {
   xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
   xhr.onload = function() {
       if (xhr.status === 200) {
-        console.log(xhr.responseText);
         window.location = '/books';
       }
       else {

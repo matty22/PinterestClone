@@ -23,10 +23,22 @@ bookRouter.route('/data')
             });
 });
 
+// Route for client JS to hit to retrieve data
+bookRouter.route('/data/request')
+          // Method to get all books
+          .get(function(req, res, next) {
+            Books.find({id: req.body.id}, function(err, book) {
+              if (err) throw err;
+              res.json(book);
+            });
+});
+
+// This route serves the HTML when someone hits the /add route
 bookRouter.get('/add', function(req, res, next) {
   res.render('../public/addbook');
 });
 
+// This route handles the actual adding of books to the library
 bookRouter.route('/add/data')
           .post(function(req, res, next) {
             Books.create({name: req.body.name, image_url: req.body.image_url, owner: req.body.owner}, function(err, book) {

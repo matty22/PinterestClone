@@ -17,6 +17,25 @@ main div {
   align-self: center;
 }
 
+#notifications {
+  display: flex;
+}
+
+#notifications div {
+  width: 200px;
+  color: #ffffff;
+  margin: 5px 5px;
+  padding: 5px 5px;
+}
+
+#borrowRequests {
+  background-color: #00ff45;
+}
+
+#lendRequests {
+  background-color: #4500ff;
+}
+
 main div input {
   border: 0;
   height: 45px;
