@@ -66,9 +66,9 @@ userRouter.route('/edit/data')
 // Update user profile when they have a pending book request
 userRouter.route('/request/data')
           .put(function(req, res, next) {
-            console.log(req);
-            Users.findByIdAndUpdate(req.body.owner, {requests: req.body}, {new: true}, function(err, user) {
+            Users.findById(req.query.owner, function(err, user) {
               if (err) throw err;
+              user.requests.push(req.query.bookId);
               res.send(user);
             });
           });

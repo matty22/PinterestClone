@@ -23,23 +23,20 @@ window.onload = function() {
 // Upon book request, find the book in the database, then find the owner of that book
 // and add that book to their requests array
 function requestBook(event) {
-  let requestedBookId = {};
-  requestedBookId.id = event.srcElement.id;
-  let json = JSON.stringify(requestedBookId);
 
   // First, find the requested book
   let xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://localhost:3000/books/data/request', true);
+  xhr.open('GET', 'http://localhost:3000/books/data/request/' + event.srcElement.id, true);
   xhr.onload = function() {
       if (xhr.status === 200) {
         
         // Then, find that book's owner and stick the returned book object in their requests array
-        let response = JSON.parse(xhr.responseText)[0];
-        let bookJson = JSON.stringify(response);
-
-
+        let responseArray = JSON.parse(xhr.responseText);
+        let response = responseArray[0];
+        console.log(response);
+        
         let bookXhr = new XMLHttpRequest();
-        bookXhr.open('PUT', 'http://localhost:3000/users/request/data', true);
+        bookXhr.open('PUT', 'http://localhost:3000/users/request/data?owner=' + response.owner + '&bookId=' + response._id, true);
         bookXhr.onload = function() {
             if (bookXhr.status === 200) {
              console.log("This is the updated user: " + bookXhr.responseText);
@@ -48,11 +45,11 @@ function requestBook(event) {
                 alert("You done goofed");
             }
         }
-        bookXhr.send(bookJson);
+        bookXhr.send();
       }
       else {
           alert("You done goofed");
       }
   }
-  xhr.send(json);
+  xhr.send();
 }

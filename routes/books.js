@@ -24,10 +24,10 @@ bookRouter.route('/data')
 });
 
 // Route for client JS to hit to retrieve data
-bookRouter.route('/data/request')
+bookRouter.route('/data/request/:id')
           // Method to get all books
           .get(function(req, res, next) {
-            Books.find({id: req.body.id}, function(err, book) {
+            Books.find({_id: req.params.id}, function(err, book) {
               if (err) throw err;
               res.json(book);
             });
