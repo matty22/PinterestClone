@@ -53,4 +53,20 @@ bookRouter.route('/add/data')
             });
           });
 
+// Route to render trade approval page
+bookRouter.get('/approve', function(req, res, next) {
+  res.render('../public/approve');
+});
+
+// Route to show the user how many trade requests they have pending
+bookRouter.route('/approve/data')
+          .get(function(req, res, next) {
+            Books.find({}, function(err, book) {
+              if (err) throw err;
+              res.json(book);
+            });
+          });
+
 module.exports = bookRouter;
+
+

@@ -1,6 +1,4 @@
 
-// LOTS TO DO HERE
-
 // Function that edits a user profile
 function userEdited() {
 
@@ -20,8 +18,7 @@ function userEdited() {
     xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
     xhr.onload = function() {
         if (xhr.status === 200) {
-          console.log(xhr.responseText);
-          // window.location = '/books'
+          window.location = '/books'
         }
         else {
             console.error("you suck: signup.js page");

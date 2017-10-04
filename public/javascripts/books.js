@@ -4,13 +4,18 @@ window.onload = function() {
   let user = JSON.parse(localStorage.getItem('user'));
   document.getElementById('numberOfLends').innerHTML = user.requests.length - 1;  
   let xhr = new XMLHttpRequest();
+
+  if (user.requests.length > 1) {
+      document.getElementById('approveLink').href = '/books/approve';
+  }
+
   xhr.open('GET', 'http://localhost:3000/books/data', true);
   xhr.onload = function() {
       if (xhr.status === 200) {
         let bookArray = JSON.parse(xhr.responseText);
         bookArray.forEach(function(element) {
           let cardChild = document.createElement("div");
-          cardChild.innerHTML = "<img class='bookImage' src='" + element.image_url +"'><input id='" + element._id + "'type='button' value='Request Book' onclick='requestBook(event)'>";
+          cardChild.innerHTML = "<img class='bookImage' src='" + element.image_url +"'><input id='" + element._id + "'type='button' value='Request Book' onclick='requestBook(event); this.disabled=true'>";
           document.getElementById("library").appendChild(cardChild);
         });
       }
