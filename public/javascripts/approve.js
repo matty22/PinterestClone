@@ -36,7 +36,7 @@ window.onload = function() {
   xhr.send();
 }
 
-
+// Function to remove a pending request from book owner tally
 function approveRequests(event) {
   console.log('Request approved');
 }
