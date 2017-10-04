@@ -4,14 +4,8 @@ var Schema = mongoose.Schema;
 
 // Define requests sub-schema
 var requestSchema = new Schema({
-  name: {
+  bookId: {
     type: String
-  },
-  image_url: {
-    type: String
-  },
-  owner: {
-    type: String,
   }
 });
 
@@ -35,7 +29,7 @@ var userSchema = new Schema({
   state: {
     type: String
   },
-  requests: [requestSchema]
+  requests: [{type: String}]
 });
 
 

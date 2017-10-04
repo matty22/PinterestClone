@@ -4,10 +4,10 @@
 // Function that edits a user profile
 function userEdited() {
 
-  let user = JSON.parse(sessionStorage.getItem('user'));
+  let user = JSON.parse(localStorage.getItem('user'));
   let userObj = {};
 
-  userObj.id = user[0]._id;
+  userObj.id = user._id;
   userObj.name = document.getElementById('name').value;
   userObj.city = document.getElementById('city').value;
   userObj.state = document.getElementById('state').value;

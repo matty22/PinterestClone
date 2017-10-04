@@ -1,6 +1,8 @@
 
 // On page load, grab all the books available in the database and display to user
 window.onload = function() {
+  let user = JSON.parse(localStorage.getItem('user'));
+  document.getElementById('numberOfLends').innerHTML = user.requests.length - 1;  
   let xhr = new XMLHttpRequest();
   xhr.open('GET', 'http://localhost:3000/books/data', true);
   xhr.onload = function() {
@@ -33,13 +35,12 @@ function requestBook(event) {
         // Then, find that book's owner and stick the returned book object in their requests array
         let responseArray = JSON.parse(xhr.responseText);
         let response = responseArray[0];
-        console.log(response);
         
         let bookXhr = new XMLHttpRequest();
         bookXhr.open('PUT', 'http://localhost:3000/users/request/data?owner=' + response.owner + '&bookId=' + response._id, true);
         bookXhr.onload = function() {
             if (bookXhr.status === 200) {
-             console.log("This is the updated user: " + bookXhr.responseText);
+                localStorage.setItem('user', bookXhr.responseText);
             }
             else {
                 alert("You done goofed");

@@ -8,7 +8,7 @@ function userCreated() {
   userObj.name = document.getElementById('name').value;
   userObj.city = document.getElementById('city').value;
   userObj.state = document.getElementById('state').value;
-  userObj.requests = [null]; 
+  userObj.requests = ['no requests']; 
 
   if (userObj.email && userObj.password) {
     // Setup data object to send to Express route
@@ -18,7 +18,8 @@ function userCreated() {
     xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
     xhr.onload = function() {
         if (xhr.status === 200) {
-          sessionStorage.setItem('user', xhr.responseText)
+          console.log(xhr.responseText);
+          localStorage.setItem('user', xhr.responseText)
           window.location = '/books'
         }
         else {

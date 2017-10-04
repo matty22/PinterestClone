@@ -6,7 +6,6 @@ var Schema = mongoose.Schema;
 var bookSchema = new Schema({
   name: {
     type: String,
-    unique: true,
     required: true
   },
   image_url: {
