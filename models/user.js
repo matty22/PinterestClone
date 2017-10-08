@@ -13,7 +13,6 @@ var requestSchema = new Schema({
 var userSchema = new Schema({
   email: {
     type: String,
-    unique: true,
     required: true
   },
   password: {

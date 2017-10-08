@@ -14,7 +14,8 @@ function login() {
   xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
   xhr.onload = function() {
       if (xhr.status === 200) {
-        localStorage.setItem('user', xhr.responseText)
+        let user = JSON.parse(xhr.responseText)[0];
+        localStorage.setItem('user', JSON.stringify(user));
         window.location = '/books';
       }
       else {

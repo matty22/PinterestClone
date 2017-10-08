@@ -67,6 +67,14 @@ bookRouter.route('/approve/data')
             });
           });
 
+bookRouter.route('/approve/confirm')
+          .get(function(req, res, next) {
+            Books.findById(req.query.book, function(err, book) {
+              if (err) throw err;
+              res.send(book)
+            });
+          });          
+
 module.exports = bookRouter;
 
 

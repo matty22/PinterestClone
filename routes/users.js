@@ -72,4 +72,13 @@ userRouter.route('/request/data')
             });
           });
 
+// Update user profile when they have a pending book request
+userRouter.route('/confirm/data')
+          .put(function(req, res, next) {
+            Users.findByIdAndUpdate(req.query.owner, {$pull: { 'requests': req.query.bookId }}, {new: true}, function(err, user) {
+              if (err) throw err;
+              res.send(user);
+            });
+          });
+
 module.exports = userRouter;
