@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 // Production Database connection URL
-var url = process.env.MongoURL;
+var url = process.env.MONGOURL;
 
 // // Localhost Database connection URL
 // var url = 'mongodb://localhost:27017/books';
