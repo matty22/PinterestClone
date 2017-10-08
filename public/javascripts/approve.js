@@ -10,7 +10,7 @@ window.onload = function() {
   realArray.splice(0, 1);
   
   let xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://localhost:3000/books/approve/data', true);
+  xhr.open('GET', 'https://matty22booktrade.herokuapp.com/books/approve/data', true);
   xhr.onload = function() {
       if (xhr.status === 200) {
         // Grab all the books from dB and then filter out the ones that match the logged in user's pending requests
@@ -36,25 +36,11 @@ window.onload = function() {
 }
 
 // Function to remove a pending request from book owner tally
-// function approveRequest(event) {
-//   let xhr = new XMLHttpRequest();
-//   xhr.open('GET', 'http://localhost:3000/approve/confirm?book=' + event.srcElement.id, true);
-//   xhr.onload = function() {
-//     if (xhr.status === 200) {
-//       console.log(xhr.responseText);
-//     }
-//     else {
-//       console.log('You done goofed');
-//     }
-//   }
-// }
-
-
 function approveRequest(event) {
   
     // First, find the requested book
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:3000/books/data/request/' + event.srcElement.id, true);
+    xhr.open('GET', 'https://matty22booktrade.herokuapp.com/books/data/request/' + event.srcElement.id, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
           // Then, find that book's owner and remove the returned book id from their requests array
@@ -62,12 +48,11 @@ function approveRequest(event) {
           let response = responseArray[0];
           
           let bookXhr = new XMLHttpRequest();
-          bookXhr.open('PUT', 'http://localhost:3000/users/confirm/data?owner=' + response.owner + '&bookId=' + response._id, true);
+          bookXhr.open('PUT', 'https://matty22booktrade.herokuapp.com/users/confirm/data?owner=' + response.owner + '&bookId=' + response._id, true);
           bookXhr.onload = function() {
               if (bookXhr.status === 200) {
                 let user = JSON.parse(bookXhr.responseText);
                 localStorage.setItem('user', bookXhr.responseText);
-                console.log(user);
                 document.getElementById('numberOfLends').innerHTML = user.requests.length - 1;
               }
               else {

@@ -9,7 +9,7 @@ window.onload = function() {
       document.getElementById('approveLink').href = '/books/approve';
   }
 
-  xhr.open('GET', 'http://localhost:3000/books/data', true);
+  xhr.open('GET', 'https://matty22booktrade.herokuapp.com/books/data', true);
   xhr.onload = function() {
       if (xhr.status === 200) {
         let bookArray = JSON.parse(xhr.responseText);
@@ -33,7 +33,7 @@ function requestBook(event) {
 
   // First, find the requested book
   let xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://localhost:3000/books/data/request/' + event.srcElement.id, true);
+  xhr.open('GET', 'https://matty22booktrade.herokuapp.com/books/data/request/' + event.srcElement.id, true);
   xhr.onload = function() {
       if (xhr.status === 200) {
         
@@ -42,7 +42,7 @@ function requestBook(event) {
         let response = responseArray[0];
         
         let bookXhr = new XMLHttpRequest();
-        bookXhr.open('PUT', 'http://localhost:3000/users/request/data?owner=' + response.owner + '&bookId=' + response._id, true);
+        bookXhr.open('PUT', 'https://matty22booktrade.herokuapp.com/users/request/data?owner=' + response.owner + '&bookId=' + response._id, true);
         bookXhr.onload = function() {
             if (bookXhr.status === 200) {
                 localStorage.setItem('user', bookXhr.responseText);

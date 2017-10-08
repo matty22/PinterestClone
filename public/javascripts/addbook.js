@@ -32,7 +32,7 @@ function addBookToLibrary() {
 
   let json = JSON.stringify(book);
   let xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://localhost:3000/books/add/data', true);
+  xhr.open('POST', 'https://matty22booktrade.herokuapp.com/books/add/data', true);
   xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
   xhr.onload = function() {
       if (xhr.status === 200) {

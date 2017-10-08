@@ -14,7 +14,7 @@ function userEdited() {
     // Setup data object to send to Express route
     var json = JSON.stringify(userObj);
     var xhr = new XMLHttpRequest();
-    xhr.open('PUT', 'http://localhost:3000/users/edit/data', true);
+    xhr.open('PUT', 'https://matty22booktrade.herokuapp.com/users/edit/data', true);
     xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
     xhr.onload = function() {
         if (xhr.status === 200) {
