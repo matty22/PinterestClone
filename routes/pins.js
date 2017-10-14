@@ -3,45 +3,45 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 // Set up Mongoose schema
-var Books = require('../models/book');
+var Pins = require('../models/pin');
 
-var bookRouter = express.Router();
-bookRouter.use(bodyParser.json());
+var pinRouter = express.Router();
+pinRouter.use(bodyParser.json());
 
 // This route just renders the signup page
-bookRouter.get('/', function(req, res, next) {
-  res.render('../public/books');
+pinRouter.get('/', function(req, res, next) {
+  res.render('../public/pinboard');
 });
 
 // Route for client JS to hit to retrieve data
-bookRouter.route('/data')
-          // Method to get all books
+pinRouter.route('/data')
+          // Method to get all pins
           .get(function(req, res, next) {
-            Books.find({}, function(err, book) {
+            Pins.find({}, function(err, book) {
               if (err) throw err;
               res.json(book);
             });
 });
 
 // Route for client JS to hit to retrieve data
-bookRouter.route('/data/request/:id')
-          // Method to get all books
+pinRouter.route('/data/request/:id')
+          // Method to get all pins
           .get(function(req, res, next) {
-            Books.find({_id: req.params.id}, function(err, book) {
+            Pins.find({_id: req.params.id}, function(err, book) {
               if (err) throw err;
               res.json(book);
             });
 });
 
 // This route serves the HTML when someone hits the /add route
-bookRouter.get('/add', function(req, res, next) {
+pinRouter.get('/add', function(req, res, next) {
   res.render('../public/addbook');
 });
 
-// This route handles the actual adding of books to the library
-bookRouter.route('/add/data')
+// This route handles the actual adding of pins to the library
+pinRouter.route('/add/data')
           .post(function(req, res, next) {
-            Books.create({name: req.body.name, image_url: req.body.image_url, owner: req.body.owner}, function(err, book) {
+            Pins.create({name: req.body.name, image_url: req.body.image_url, owner: req.body.owner}, function(err, book) {
               if (err) throw err;
               if (book) {
                 res.send(book);
@@ -54,27 +54,27 @@ bookRouter.route('/add/data')
           });
 
 // Route to render trade approval page
-bookRouter.get('/approve', function(req, res, next) {
+pinRouter.get('/approve', function(req, res, next) {
   res.render('../public/approve');
 });
 
 // Route to show the user how many trade requests they have pending
-bookRouter.route('/approve/data')
+pinRouter.route('/approve/data')
           .get(function(req, res, next) {
-            Books.find({}, function(err, book) {
+            Pins.find({}, function(err, book) {
               if (err) throw err;
               res.json(book);
             });
           });
 
-bookRouter.route('/approve/confirm')
+pinRouter.route('/approve/confirm')
           .get(function(req, res, next) {
-            Books.findById(req.query.book, function(err, book) {
+            Pins.findById(req.query.book, function(err, book) {
               if (err) throw err;
               res.send(book)
             });
           });          
 
-module.exports = bookRouter;
+module.exports = pinRouter;
 
 

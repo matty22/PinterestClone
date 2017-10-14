@@ -2,8 +2,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// Define book schema
-var bookSchema = new Schema({
+// Define pin schema
+var pinSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -17,8 +17,8 @@ var bookSchema = new Schema({
   }
 });
 
-// Create Book model using book schema
-var Books = mongoose.model('Book', bookSchema);
+// Create Pin model using pin schema
+var Pins = mongoose.model('Pin', pinSchema);
 
 // Make this available outside this module
-module.exports = Books;
+module.exports = Pins;
