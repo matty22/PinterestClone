@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="google-signin-client_id" content="458553144787-t2re50gl11bhttoole7o7jejv6o34a9j.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Book Trader</title>
+    <title>Halloween Pins</title>
 
     <!-- Styles for index page -->
     <link rel="stylesheet" href="../stylesheets/style.css">
@@ -18,19 +20,18 @@
 
   <body>
     <header>
-      <h1>Book Trader</h1>
+      <h1>Halloween Pins</h1>
       <nav>
-        <a href="/books">Library</a>
-        <a href="/books/add">Add a Book</a>
-        <a href="/users/edit">Edit Profile</a>
+        <a href="/">All board</a>
       </nav>
     </header>
-    <section id="notifications">
-      <a id="approveLink"><div id="lendRequests">You have <span id="numberOfLends">0</span> pending lend requests</div></a>
-    </section>
-    <main id="library">
+    <main>
+      <p>This is the user board</p>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </main>
     <footer>&copy; 2017 Matt Leonard</footer>
-    <script type="text/javascript" src="/javascripts/books.js"></script>
+    <script type="text/javascript" src="/javascripts/pinboard.js"></script>
   </body>
 </html>
+
+

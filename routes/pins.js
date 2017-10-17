@@ -9,12 +9,12 @@ var pinRouter = express.Router();
 pinRouter.use(bodyParser.json());
 
 // This route just renders the signup page
-pinRouter.get('/', function(req, res, next) {
+pinRouter.get('/pinboard', function(req, res, next) {
   res.render('../public/pinboard');
 });
 
 // Route for client JS to hit to retrieve data
-pinRouter.route('/data')
+pinRouter.route('/all')
           // Method to get all pins
           .get(function(req, res, next) {
             Pins.find({}, function(err, book) {
