@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="google-signin-client_id" content="458553144787-t2re50gl11bhttoole7o7jejv6o34a9j.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="icon" href="../../favicon.ico">
 
     <title>Halloween Pins</title>
@@ -19,9 +21,9 @@
     <header>
       <h1>Halloween Pins</h1>
       <nav>
-        <a href="/pins/pinboard">Your Board</a>
-        <a href="/users/login">Login</a>
-        <a href="/users/signup">Signup</a>
+        <a href="/pins/allboard">All board</a>
+        <a id="pinboardButton" href="/pins/pinboard">Your board</a>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
       </nav>
     </header>
     <main>

@@ -12,7 +12,7 @@ var pinSchema = new Schema({
     type: String,
     required: true
   },
-  owner: {
+  ownerId: {
     type: String
   }
 });
@@ -22,3 +22,6 @@ var Pins = mongoose.model('Pin', pinSchema);
 
 // Make this available outside this module
 module.exports = Pins;
+
+// Example data set for pins
+// [{'name': 'Test Name', 'image_url': 'TestURL', 'ownerId': 'Test Owner' }]

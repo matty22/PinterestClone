@@ -5,17 +5,21 @@ window.onload = function() {
   xhr.open('GET', 'http://localhost:3000/pins/all', true);
   xhr.onload = function() {
       if (xhr.status === 200) {
-        console.log("It worked");
-        let bookArray = JSON.parse(xhr.responseText);
-        bookArray.forEach(function(element) {
-          let cardChild = document.createElement("div");
-          cardChild.innerHTML = "<img class='bookImage' src='" + element.image_url +"'><input id='" + element._id + "'type='button' value='Request Book' onclick='requestBook(event); this.disabled=true'>";
-          document.getElementById("library").appendChild(cardChild);
-        });
+    
       }
       else {
           alert("You done goofed");
       }
   }
   xhr.send();
+}
+
+// Function runs when user signs into Google
+function onSignIn(googleUser) {
+  user_token = googleUser.getAuthResponse().id_token;
+  sessionStorage.setItem("userId", googleUser.getBasicProfile().getId());
+  console.log(googleUser.getBasicProfile().getId());
+  if (googleUser) {
+    document.getElementById('pinboardButton').style.display = 'inline-block';
+  }
 }

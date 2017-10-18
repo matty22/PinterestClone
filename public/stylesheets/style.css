@@ -15,12 +15,13 @@ header {
 nav {
   display: flex;
   margin-right: 5px;
+  align-items: center;
 }
 
 nav a {
   padding: 10px 20px;
   background-color: #fafafa;
-  margin-left: 5px;
+  margin-right: 5px;
   align-self: center;
   color: #020202;
   text-decoration: none;
@@ -29,6 +30,10 @@ nav a {
 nav a:hover {
   background-color: orangered;
   color: #ffffff;
+}
+
+#pinboardButton {
+  display: none;
 }
 
 main {

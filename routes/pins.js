@@ -8,9 +8,14 @@ var Pins = require('../models/pin');
 var pinRouter = express.Router();
 pinRouter.use(bodyParser.json());
 
-// This route just renders the signup page
+// This route just renders the user board page
 pinRouter.get('/pinboard', function(req, res, next) {
   res.render('../public/pinboard');
+});
+
+// This route just renders the all board page
+pinRouter.get('/allboard', function(req, res, next) {
+  res.render('../public/allboard');
 });
 
 // Route for client JS to hit to retrieve data
