@@ -13,6 +13,14 @@ pinRouter.get('/pinboard', function(req, res, next) {
   res.render('../public/pinboard');
 });
 
+// Find all pins for a specific user
+pinRouter.route('/pinboard/:owner')
+         .get(function(req, res, next) {
+          Pins.find({ ownerId: req.params.owner }, function(err, pins) {
+            res.send(pins);
+          });
+         });
+
 // This route just renders the all board page
 pinRouter.get('/allboard', function(req, res, next) {
   res.render('../public/allboard');

@@ -104,6 +104,11 @@ main {
   color: #ffffff;
 }
 
+#warning {
+  display: none;
+  color: #ffffff;
+}
+
 footer {
   color: #ffffff;
   padding: 10px

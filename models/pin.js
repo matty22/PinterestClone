@@ -26,8 +26,8 @@ module.exports = Pins;
 
 // Example data set for pins
 // [
-// {'title': 'NMBC Painting', 'image_url': 'https://i.pinimg.com/736x/07/0f/44/070f443f628abab840ebab58306fff1b--halloween-movies-disney-halloween.jpg', 'ownerId': 'Matt' },
-// {'title': 'Jack-o-lanterns', 'image_url': 'http://cdn.history.com/sites/2/2013/11/Halloween-Hero-1-A.jpeg', 'ownerId': 'Matt' },
-// {'title': 'Wicked Witch', 'image_url': 'http://www.slate.com/content/dam/slate/blogs/the_eye/2013/10/131017_EYE_WickedWitch.jpg.CROP.original-original.jpg', 'ownerId': 'Matt' },
-// {'title': 'Zombie', 'image_url': 'https://i.pinimg.com/736x/68/d3/bc/68d3bccc93b1c64bd46c80e95bd400ee--zombie-attack-zombie-art.jpg', 'ownerId': 'Matt' }
+// {'title': 'NMBC Painting', 'image_url': 'https://i.pinimg.com/736x/07/0f/44/070f443f628abab840ebab58306fff1b--halloween-movies-disney-halloween.jpg', 'ownerId': '105884340713334870000' },
+// {'title': 'Jack-o-lanterns', 'image_url': 'http://cdn.history.com/sites/2/2013/11/Halloween-Hero-1-A.jpeg', 'ownerId': '105884340713334864919' },
+// {'title': 'Wicked Witch', 'image_url': 'http://www.slate.com/content/dam/slate/blogs/the_eye/2013/10/131017_EYE_WickedWitch.jpg.CROP.original-original.jpg', 'ownerId': '105884340713334870000' },
+// {'title': 'Zombie', 'image_url': 'https://i.pinimg.com/736x/68/d3/bc/68d3bccc93b1c64bd46c80e95bd400ee--zombie-attack-zombie-art.jpg', 'ownerId': '105884340713334864919' }
 // ]
