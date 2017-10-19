@@ -8,10 +8,10 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 // Production Database connection URL
-// var url = process.env.MONGOURL;
+var url = process.env.MONGOURL;
 
 // // Localhost Database connection URL
-var url = 'mongodb://localhost:27017/pins';
+// var url = 'mongodb://localhost:27017/pins';
 mongoose.connect(url);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
