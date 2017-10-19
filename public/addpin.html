@@ -23,10 +23,14 @@
       </nav>
     </header>
     <main>
-      <a id="addPinButton" href='/pins/add'>Add New Pin</a>
+        <form id="addPinForm">
+            <input type="text" id="title" placeholder="Title" required>
+            <input type="text" id="url" placeholder="Image URL" required>
+            <button type="button" onclick="addPin()">Add Pin</button>
+          </form>
     </main>
     <footer>&copy; 2017 Matt Leonard</footer>
-    <script type="text/javascript" src="/javascripts/pinboard.js"></script>
+    <script type="text/javascript" src="/javascripts/addpin.js"></script>
   </body>
 </html>
 

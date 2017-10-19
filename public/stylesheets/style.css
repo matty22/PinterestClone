@@ -2,13 +2,14 @@
 body {
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
+  background-color: orange;
 }
 
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: darkgray;
+  background-color: orange;
   padding: 0px 20px;
 }
 
@@ -37,25 +38,73 @@ nav a:hover {
 }
 
 main {
-  display: flex;
-  justify-content: center;
+  background-color: #000000;
+  padding: 20px 20px;  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   height: 80vh;
 }
 
-main div {
+.pinDiv {
+  background-color: #ffffff;
+  width: 220px;
+  max-height: 250px;
   display: flex;
-  justify-content: center;
-  width: 300px;
-  height: 300px;
-  background-color: royalblue;
-  align-self: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px;
 }
 
+.pinImage {
+  max-width: 200px;
+  max-height: 200px;
+}
 
-main div p {
-  font-size: 24px;
-  text-align: center;
-  padding: 0px 10px;
+#addPinButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 120px;
+  max-height: 30px;
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+}
+
+#addPinButton:hover {
+  background-color: orangered;
   color: #ffffff;
-  align-self: center;
+}
+
+#addPinForm {
+  display: flex;
+  width: 300px;
+  height: 300px;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+#addPinForm input {
+  padding: 10px 5px;
+  border: 1px solid #bababa;
+  margin-bottom: 10px;
+}
+
+#addPinForm button {
+  border: 0;
+  padding: 10px 5px;
+  background-color: #fafafa;
+  color: #000000;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#addPinForm button:hover {
+  background-color: orangered;
+  color: #ffffff;
+}
+
+footer {
+  color: #ffffff;
+  padding: 10px
 }

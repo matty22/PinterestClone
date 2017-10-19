@@ -28,22 +28,12 @@ pinRouter.route('/all')
             });
 });
 
-// Route for client JS to hit to retrieve data
-pinRouter.route('/data/request/:id')
-          // Method to get all pins
-          .get(function(req, res, next) {
-            Pins.find({_id: req.params.id}, function(err, book) {
-              if (err) throw err;
-              res.json(book);
-            });
-});
-
 // This route serves the HTML when someone hits the /add route
 pinRouter.get('/add', function(req, res, next) {
-  res.render('../public/addbook');
+  res.render('../public/addpin');
 });
 
-// This route handles the actual adding of pins to the library
+// This route handles the actual adding of pins to the board
 pinRouter.route('/add/data')
           .post(function(req, res, next) {
             Pins.create({name: req.body.name, image_url: req.body.image_url, owner: req.body.owner}, function(err, book) {
@@ -56,29 +46,7 @@ pinRouter.route('/add/data')
                 res.end("Did not add");
               }
             });
-          });
-
-// Route to render trade approval page
-pinRouter.get('/approve', function(req, res, next) {
-  res.render('../public/approve');
-});
-
-// Route to show the user how many trade requests they have pending
-pinRouter.route('/approve/data')
-          .get(function(req, res, next) {
-            Pins.find({}, function(err, book) {
-              if (err) throw err;
-              res.json(book);
-            });
-          });
-
-pinRouter.route('/approve/confirm')
-          .get(function(req, res, next) {
-            Pins.findById(req.query.book, function(err, book) {
-              if (err) throw err;
-              res.send(book)
-            });
-          });          
+          });         
 
 module.exports = pinRouter;
 
