@@ -19,7 +19,14 @@ pinRouter.route('/pinboard/:owner')
           Pins.find({ ownerId: req.params.owner }, function(err, pins) {
             res.send(pins);
           });
-         });
+        });
+
+pinRouter.route('/pinboard/delete')
+         .delete(function(req, res, next) {
+            Pins.findByIdAndRemove(req.body._id, function(err, response) {
+              res.send(response);
+            });
+          });
 
 // This route just renders the all board page
 pinRouter.get('/allboard', function(req, res, next) {
@@ -43,11 +50,12 @@ pinRouter.get('/add', function(req, res, next) {
 
 // This route handles the actual adding of pins to the board
 pinRouter.route('/add/data')
-          .post(function(req, res, next) {
-            Pins.create({name: req.body.name, image_url: req.body.image_url, owner: req.body.owner}, function(err, book) {
+         .post(function(req, res, next) {
+            console.log(req.body);
+            Pins.create({title: req.body.title, image_url: req.body.image_url, ownerId: req.body.ownerId}, function(err, pin) {
               if (err) throw err;
-              if (book) {
-                res.send(book);
+              if (pin) {
+                res.send(pin);
               }
               else {
                 res.writeHead(401);

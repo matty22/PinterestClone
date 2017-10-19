@@ -1,6 +1,6 @@
 {
-  "name": "booktrade",
-  "version": "0.0.0",
+  "name": "pinterest",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"

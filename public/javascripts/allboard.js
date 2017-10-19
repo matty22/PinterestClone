@@ -17,7 +17,7 @@ window.onload = function() {
         pins.forEach(function(element) {
           let card = document.createElement('div');
           card.className += 'pinDiv'
-          card.innerHTML = "<img class='pinImage' src='" + element.image_url +"'><p>" + element.title + "</p>";
+          card.innerHTML = "<img class='pinImage' src='" + element.image_url +"' onerror='imgError(this)'><p>" + element.title + "</p>";
           document.getElementById("wall").appendChild(card);
         });
       }
@@ -26,4 +26,11 @@ window.onload = function() {
       }
   }
   xhr.send();
+}
+
+
+function imgError(image) {
+  image.onerror = "";
+  image.src = "../images/halloweenPlaceholder.png";
+  return true;
 }
