@@ -4,7 +4,7 @@ window.onload = function() {
   let userId = sessionStorage.getItem('userId');
 
   let xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://localhost:3000/pins/pinboard/' + userId, true);
+  xhr.open('GET', 'https://halloween-pins.herokuapp.com/pins/pinboard/' + userId, true);
   xhr.onload = function() {
       if (xhr.status === 200) {
         let pins = JSON.parse(xhr.responseText);
@@ -31,7 +31,7 @@ function deletePin(event) {
   
   let json = JSON.stringify(deleteObject);
   let xhr = new XMLHttpRequest();
-  xhr.open('DELETE', 'http://localhost:3000/pins/pinboard/delete', true);
+  xhr.open('DELETE', 'https://halloween-pins.herokuapp.com/pins/pinboard/delete', true);
   xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
   xhr.onload = function() {
     if (xhr.status === 200) {

@@ -8,7 +8,7 @@ function addPin() {
     let json = JSON.stringify(pinObject);
     let xhr = new XMLHttpRequest();
 
-    xhr.open('POST', 'http://localhost:3000/pins/add/data', true);
+    xhr.open('POST', 'https://halloween-pins.herokuapp.com/pins/add/data', true);
     xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
     xhr.onload = function() {
         if (xhr.status === 200) {

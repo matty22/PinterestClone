@@ -10,7 +10,7 @@ window.onload = function() {
   }
 
   let xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://localhost:3000/pins/all', true);
+  xhr.open('GET', 'https://halloween-pins.herokuapp.com/pins/all', true);
   xhr.onload = function() {
       if (xhr.status === 200) {
         let pins = JSON.parse(xhr.responseText);
